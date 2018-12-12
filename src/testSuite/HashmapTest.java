@@ -1,13 +1,13 @@
 package testSuite;
-import static org.junit.Assert.fail;
-
+import static org.junit.Assert.*;
 import org.junit.Test;
+import pa3.Hashmap;
 
 public class HashmapTest {
 
 	@Test
 	public void testHashmap() {
-		fail("Not yet implemented");
+		Hashmap test = new Hashmap(3);
 	}
 
 	@Test
@@ -17,7 +17,7 @@ public class HashmapTest {
 
 	@Test
 	public void testGetValue() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test

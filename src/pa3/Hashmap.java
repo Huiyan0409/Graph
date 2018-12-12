@@ -1,5 +1,8 @@
 package pa3;
-
+/**
+ * This class implements the Hashmap data structure, which allows to add items and test if they are elements of the heap
+ * @author Huiyan Zhang; nicolezhang@brandeis.edu
+ */
 public class Hashmap {
 
     private static final float FACTOR = 0.75f;
