@@ -11,16 +11,34 @@ public class Hashmap {
 
     private Entry[] eList;
 
+    /**
+     * Constructor
+     * @param size
+     */
     public Hashmap(int size) {
         eList = new Entry[size];
         threshold = (int) (size * FACTOR);
         size = 0;
     }
-
+    
+   /**
+    * Hash function
+    * @param key, a graphNode
+    * @return the index of the key
+    * The running time is O(1)
+    */
     private int index(GraphNode key) {
         return (key.hashCode() & 0x7FFFFFFF) % eList.length;
     }
 
+    /**
+     * check the hashmap to see if there is an Entry for the key,
+     * if there is, change its value to “value”, 
+     * if there isn't, add it to the hashmap with that value.
+     * @param key, a GraphNode key
+     * @param value, the value that would be changed to
+     * The running time is O(1)
+     */
     public void set(GraphNode key, int value) {
         if (key == null) return;
         int index = index(key);
@@ -34,15 +52,27 @@ public class Hashmap {
         }
         add(index, key, value);
     }
-
+    
+    /**
+     * Add a new element to the hashmap
+     * @param index, the index of that element
+     * @param key, the graphNode
+     * @param value, the value
+     * The running time is O(1)
+     */
     private void add(int index, GraphNode key, int value) {
         Entry entry = new Entry(key, value, eList[index]);
         eList[index] = entry;
-        if (size++ >= threshold) {
+        if (size++ >= threshold) {//rehashing
             resize(eList.length * 2);
         }
     }
 
+    /**
+     * Rehashing if the space is not enough
+     * @param capacity, the current space
+     * The running time is O(n)
+     */
     private void resize(int capacity) {
         if (capacity <= eList.length) return;
         Entry[] neweList = new Entry[capacity];
@@ -60,12 +90,24 @@ public class Hashmap {
         threshold = (int) (eList.length * FACTOR);
     }
 
-    public Object getValue(GraphNode key) {
-        if (key == null) return null;
-        Entry entry = getEntry(key);
+    /**
+     * Gets the value for the entry with g as the key
+     * @param g, the graphNode
+     * @return the value for the entry if exists
+     * The running time is O(1)
+     */
+    public int getValue(GraphNode g) {
+        if (g == null) return -1;
+        Entry entry = getEntry(g);
         return entry == null ? null : entry.getValue();
     }
 
+    /**
+     * Gets the entry of the graphNode key
+     * @param key, the graphNode
+     * @return entry if exists; null if not
+     * The running time is O(n)
+     */
     public Entry getEntry(GraphNode key) {
         int a = index(key);
         Entry entry = eList[index(key)];
@@ -78,6 +120,11 @@ public class Hashmap {
         return null;
     }
 
+    /**
+     * Remove an element from the hashmap
+     * @param key, a graphNode as the key 
+     * The running time is O(1)
+     */
     public void remove(GraphNode key) {
         if (key == null) return;
         int index = index(key);
@@ -94,16 +141,31 @@ public class Hashmap {
             entry = entry.getNext();
         }
     }
-
+    
+    /**
+     * Distinguish if the hashmap has the key
+     * @param key, a graphNode as the key
+     * @return true if the hasmap has the key; false if not
+     * The running time is O(1)
+     */
     public boolean hasKey(GraphNode key) {
         if (key == null) return false;
         return getEntry(key) != null;
     }
 
+    /**
+     * Get the size of the hashmap
+     * @return the size of the hashmap
+     * The running time is O(1)
+     */
     public int size() {
         return this.size;
     }
 
+    /**
+     * Clean the whole hashmap
+     * The running time is O(n)
+     */
     public void clear() {
         for (int i = 0; i < eList.length; i++) {
             eList[i] = null;

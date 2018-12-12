@@ -3,8 +3,13 @@ package pa3;
 import java.io.File;
 import java.io.FileWriter;
 
+/**
+ * This is the main class of the program, coming up with the minimum path
+ * @author Huiyan Zhang; nicolezhang@brandeis.edu
+ */
 public class FindMinPath {
 
+	
     public static String showPath(GraphNode s,GraphNode d, String str){
         if(!s.getId().equals(d.getId())) {
             String direction = "";
