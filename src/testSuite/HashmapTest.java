@@ -1,16 +1,15 @@
 package testSuite;
-import static org.junit.Assert.*;
 import org.junit.Test;
-
-import pa3.Entry;
 import pa3.GraphNode;
 import pa3.Hashmap;
+
+import static org.junit.Assert.assertTrue;
 
 public class HashmapTest {
 
 	@Test
 	public void testSet() {
-		Hashmap test = new Hashmap(1);
+		Hashmap test = new Hashmap(2);
 		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
 		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
 		test.set(node1, 1);
@@ -35,9 +34,8 @@ public class HashmapTest {
 		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
 		test.set(node1, 1);
 		test.set(node2, 2);
-		Entry entry = new Entry(node1, 1, null);
-		Entry entry1 = new Entry(node2, 2,entry);
-		assertTrue(test.getEntry(node2) == entry1);
+
+		assertTrue(test.getEntry(node2).getValue() == 2);
 	}
 
 	@Test
@@ -49,6 +47,21 @@ public class HashmapTest {
 		test.set(node2, 2);
 		test.remove(node2);
 		assertTrue(test.hasKey(node2) == false);
+	}
+
+	@Test
+	public void testRemove2() {
+		Hashmap test = new Hashmap(1);
+		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
+		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
+		GraphNode node3 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e7", true);
+		GraphNode node4 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e8", true);
+		test.set(node1, 1);
+		test.set(node2, 2);
+		test.set(node3, 2);
+		test.set(node4, 2);
+		test.remove(node3);
+		assertTrue(test.hasKey(node3) == false);
 	}
 
 	@Test

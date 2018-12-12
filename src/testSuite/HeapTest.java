@@ -1,13 +1,10 @@
 package testSuite;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
 import org.junit.Test;
-
 import pa3.GraphNode;
-import pa3.Hashmap;
 import pa3.Heap;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * This class is a Junit test on Heap
@@ -90,53 +87,97 @@ public class HeapTest {
 	public void testHeapify() {
 		Heap test = new Heap(3);
 		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
+		node1.priority=20;
 		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
+		node2.priority=10;
 		GraphNode node3 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a1", true);
+		node3.priority=30;
 		test.insert(node1);
 		test.insert(node2);
 		test.insert(node3);
-		Heap.heapify(node3);
+		test.heapify(node3);
+		GraphNode node4 = test.remove();
+		assertTrue(node4.getId().equals(node2.getId()));
 	}
 	
 	@Test
 	public void testHeapifyUp() {
-		Heap test = new Heap(3);
+		Heap test = new Heap(10);
 		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
+		node1.priority=20;
 		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
+		node2.priority=10;
 		GraphNode node3 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a1", true);
+		node3.priority=30;
+		GraphNode node4 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a4", true);
+		node4.priority=15;
+		GraphNode node5 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a5", true);
+		node5.priority=9;
 		test.insert(node1);
 		test.insert(node2);
 		test.insert(node3);
-		heapifyUp(node2);
+		test.insert(node4);
+		test.insert(node5);
+		test.heapifyUp(2);
+		GraphNode node8 = test.remove();
+		assertTrue(node8.getId().equals(node5.getId()));
 	}
 	
 	@Test
 	public void testRemove() {
-		Heap test = new Heap(3);
+		Heap test = new Heap(10);
 		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
+		node1.priority=20;
 		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
+		node2.priority=10;
 		GraphNode node3 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a1", true);
+		node3.priority=30;
+		GraphNode node4 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a4", true);
+		node4.priority=15;
+		GraphNode node5 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f056", true);
+		node5.priority=9;
 		test.insert(node1);
 		test.insert(node2);
 		test.insert(node3);
-		assertTrue(test.remove() == node3);
+		test.insert(node4);
+		test.insert(node5);
+		assertTrue(test.remove() == node5);
+		assertTrue(test.remove() == node2);
 	}
 	
 	@Test
 	public void testHeapifyDown() {
-		Heap test = new Heap(3);
+		Heap test = new Heap(10);
 		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
+		node1.priority=20;
 		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
+		node2.priority=10;
 		GraphNode node3 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a1", true);
+		node3.priority=30;
+		GraphNode node4 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a4", true);
+		node4.priority=15;
+		GraphNode node5 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f056", true);
+		node5.priority=9;
 		test.insert(node1);
 		test.insert(node2);
 		test.insert(node3);
-		heapifyDown(node2);
+		test.insert(node4);
+		test.insert(node5);
+		test.heapifyDown(2);
+		GraphNode node9 = test.remove();
+		assertTrue(node9.getId().equals(node5.getId()));
 	}
 	
 	@Test
 	public void testUpdate() {
-		
+		Heap test = new Heap(10);
+		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
+		node1.priority=20;
+		test.insert(node1);
+		test.update(node1,21);
+		GraphNode node8 = test.remove();
+
+		assertTrue(node8.priority==21);
 	}
 	
 	

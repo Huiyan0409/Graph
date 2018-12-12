@@ -80,7 +80,7 @@ public class Hashmap {
             Entry old = eList[i];
             while (old != null) {
                 Entry next = old.getNext();
-                int index = index(old.getKey());
+                int index = (old.getKey().hashCode() & 0x7FFFFFFF) % neweList.length;//use new array length
                 old.setNext(neweList[index]);
                 neweList[index] = old;
                 old = next;
@@ -99,7 +99,7 @@ public class Hashmap {
     public int getValue(GraphNode g) {
         if (g == null) return -1;
         Entry entry = getEntry(g);
-        return entry == null ? null : entry.getValue();
+        return entry == null ? -1 : entry.getValue();
     }
 
     /**

@@ -82,7 +82,7 @@ public class Heap {
      * @param i, the index of a graphNode
      * The running time is O(logn)
      */
-    private void heapifyUp(int i) {
+    public  void heapifyUp(int i) {
         int p = (i - 1) / 2;
         GraphNode bottom = nodeArray[i];
         while(i > 0 && nodeArray[p].priority > bottom.priority) {
