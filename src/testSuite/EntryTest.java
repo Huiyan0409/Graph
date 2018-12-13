@@ -35,7 +35,7 @@ public class EntryTest {
 	public void testGetKey() {
 		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
 		Entry test = new Entry(node1, 1,null);
-		assertTrue(test.getKey() == node1);
+		assertTrue(test.getKey().getId().equals(node1.getId()));
 	}
 	
 	/**

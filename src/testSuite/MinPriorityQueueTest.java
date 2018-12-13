@@ -33,7 +33,7 @@ public class MinPriorityQueueTest {
 		node2.priority=15;
 		test.insert(node1);
 		test.insert(node2);
-		assertTrue(test.pullHighestPriorityElement() == node2);
+		assertTrue(test.pullHighestPriorityElement().getId().equals(node2.getId()));
 	}
 
 	@Test

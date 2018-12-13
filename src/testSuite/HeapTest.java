@@ -141,8 +141,8 @@ public class HeapTest {
 		test.insert(node3);
 		test.insert(node4);
 		test.insert(node5);
-		assertTrue(test.remove() == node5);
-		assertTrue(test.remove() == node2);
+		assertTrue(test.remove().getId().equals(node5.getId()));
+		assertTrue(test.remove().getId().equals(node2.getId()));
 	}
 	
 	@Test
