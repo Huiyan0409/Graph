@@ -19,7 +19,7 @@ public class MinPriorityQueue{
     /**
      * insert g into the queue with its priority
      * @param g, a graphNode which is an element in the queue
-     * The running time is O(1)
+     * The running time is O(logn)
      */
     public void insert(GraphNode g){
         heap.insert(g);
@@ -28,7 +28,7 @@ public class MinPriorityQueue{
     /**
      * return and remove from the priority queue the GraphNode with the highest priority in the queue
      * @return the graphNode with the highest prioirty
-     * The running time is O(1)
+     * The running time is O(logn)
      */
     public GraphNode pullHighestPriorityElement(){
         return heap.remove();
@@ -47,7 +47,7 @@ public class MinPriorityQueue{
      * Update the graphNode with a new Priority
      * @param g, a graphNode 
      * @param newPriority, the new priority
-     * The running time is O(1)
+     * The running time is O(logn)
      */
     public void update(GraphNode g, int newPriority){
         heap.update(g,newPriority);
