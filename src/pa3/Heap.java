@@ -85,7 +85,7 @@ public class Heap {
     public  void heapifyUp(int i) {
         int p = (i - 1) / 2;
         GraphNode bottom = nodeArray[i];
-        while(i > 0 && nodeArray[p].priority > bottom.priority) {
+        while(i > 0 && nodeArray[p].priority >=bottom.priority) {
             nodeArray[i] = nodeArray[p];
             hmap.set(nodeArray[i],i);
             i = p;
@@ -126,7 +126,7 @@ public class Heap {
             else {
                 target = l;
             }
-            if(top.priority <= nodeArray[target].priority) {
+            if(top.priority < nodeArray[target].priority) {
                 break;
             }
 

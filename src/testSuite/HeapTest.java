@@ -120,6 +120,7 @@ public class HeapTest {
 		test.insert(node5);
 		test.heapifyUp(2);
 		GraphNode node8 = test.remove();
+		node8.toString();
 		assertTrue(node8.getId().equals(node5.getId()));
 	}
 	
@@ -144,6 +145,9 @@ public class HeapTest {
 		assertTrue(test.remove().getId().equals(node5.getId()));
 		assertTrue(test.remove().getId().equals(node2.getId()));
 	}
+
+
+
 	
 	@Test
 	public void testHeapifyDown() {
@@ -167,7 +171,31 @@ public class HeapTest {
 		GraphNode node9 = test.remove();
 		assertTrue(node9.getId().equals(node5.getId()));
 	}
-	
+
+
+	@Test
+	public void testHeapifyDown2() {
+		Heap test = new Heap(10);
+		GraphNode node1 = new GraphNode("c4dbe07b-f0b5-4b8a-bf11-28780d609a91", true);
+		node1.priority=5;
+		GraphNode node2 = new GraphNode("6bb67358-3761-455c-b283-2d309ca375e6", true);
+		node2.priority=10;
+		GraphNode node3 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a1", true);
+		node3.priority=15;
+		GraphNode node4 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f0a4", true);
+		node4.priority=20;
+		GraphNode node5 = new GraphNode("66271f0e-0d4c-45f5-ae9f-12d7bb76f056", true);
+		node5.priority=30;
+		test.insert(node1);
+		test.insert(node2);
+		test.insert(node3);
+		test.insert(node4);
+		test.insert(node5);
+		test.heapifyDown(2);
+		GraphNode node9 = test.remove();
+		assertTrue(node9.getId().equals(node1.getId()));
+	}
+
 	/**
 	 * Test Update when needs to heapify up
 	 */

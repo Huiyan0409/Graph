@@ -28,7 +28,7 @@ public class Hashmap {
     * The running time is O(1)
     */
     private int index(GraphNode key) {
-        return (key.hashCode() & 0x7FFFFFFF) % eList.length;
+        return (key.getId().hashCode() & 0x7FFFFFFF) % eList.length;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Hashmap {
         int index = index(key);
         Entry entry = eList[index];
         while (entry != null) {
-            if (entry.getKey().hashCode() == key.hashCode() && (entry.getKey() == key || entry.getKey().equals(key))) {
+            if (entry.getKey().getId().equals(key.getId())) {
                 entry.setValue(value);
                 return;
             }
@@ -80,7 +80,7 @@ public class Hashmap {
             Entry old = eList[i];
             while (old != null) {
                 Entry next = old.getNext();
-                int index = (old.getKey().hashCode() & 0x7FFFFFFF) % neweList.length;//use new array length
+                int index = (old.getKey().getId().hashCode() & 0x7FFFFFFF) % neweList.length;//use new array length
                 old.setNext(neweList[index]);
                 neweList[index] = old;
                 old = next;
@@ -112,7 +112,7 @@ public class Hashmap {
         int a = index(key);
         Entry entry = eList[index(key)];
         while (entry != null) {
-            if (entry.getKey().hashCode() == key.hashCode() && (entry.getKey() == key || entry.getKey().equals(key))) {
+            if (entry.getKey().getId().equals(key.getId())) {
                 return entry;
             }
             entry = entry.getNext();
@@ -131,7 +131,7 @@ public class Hashmap {
         Entry pre = null;
         Entry entry = eList[index];
         while (entry != null) {
-            if (entry.getKey().hashCode() == key.hashCode() && (entry.getKey() == key || entry.getKey().equals(key))) {
+            if (entry.getKey().getId().equals(key.getId())) {
                 if (pre == null) eList[index] = entry.getNext();
                 else pre.setNext(entry.getNext());
                 size--;

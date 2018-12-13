@@ -2,6 +2,7 @@ package pa3;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * This is the main class of the program, coming up with the minimum path
@@ -129,29 +130,24 @@ public class FindMinPath {
      * @param str, the result
      * The running time is O(1)
      */
-    public static void writeToFile(String str) {
+    public static void writeToFile(String str) throws IOException {
     	File answer = new File("src/pa3/answer.txt");
     	if(!answer.exists()) {
-    		try {
-    			answer.createNewFile();
-    		}catch(Exception e) {
-    			e.printStackTrace();
-    		}
-    	}
-    	try {
-			FileWriter writer = new FileWriter(answer);
-			writer.write(str);
-			writer.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+
+            answer.createNewFile();
+
+
+            FileWriter writer = new FileWriter(answer);
+            writer.write(str);
+            writer.close();
+        }
     }
 
     /**
      * This is the main method of the whole program, helping the run the program and store data to the file
      * @param args
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         GraphWrapper gw = new GraphWrapper(true);
         GraphNode home = gw.getHome();
         writeToFile(run(gw,home));
