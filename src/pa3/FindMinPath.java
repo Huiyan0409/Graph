@@ -10,11 +10,12 @@ import java.io.FileWriter;
 public class FindMinPath {
 
 	/**
-	 * 
-	 * @param s
-	 * @param d
-	 * @param str
-	 * @return
+	 * Recursive method to show the path in a String
+	 * @param s, the previous graphNode
+	 * @param d, the current graphNode
+	 * @param str, a string containing the path
+	 * @return a string showing the path
+	 * The running time is O(1)
 	 */
     public static String showPath(GraphNode s,GraphNode d, String str){
         if(!s.getId().equals(d.getId())) {
@@ -42,6 +43,13 @@ public class FindMinPath {
         return str;
     }
 
+    /**
+     * Method to get the shortest path
+     * @param gw, a graph wrapper
+     * @param home, a graphNode representing home
+     * @return the result in String
+     * The running time is O(nlogn)
+     */
     public static String run(GraphWrapper gw,GraphNode home) {
         MinPriorityQueue Q = new MinPriorityQueue(10000);
         home.priority = 0;
@@ -116,6 +124,11 @@ public class FindMinPath {
         return "";
     }
     
+    /**
+     * Write the result to the file called answer
+     * @param str, the result
+     * The running time is O(1)
+     */
     public static void writeToFile(String str) {
     	File answer = new File("src/pa3/answer.txt");
     	if(!answer.exists()) {
@@ -135,7 +148,7 @@ public class FindMinPath {
     }
 
     /**
-     * This is the main method of the whole program, 
+     * This is the main method of the whole program, helping the run the program and store data to the file
      * @param args
      */
     public static void main(String args[]) {
