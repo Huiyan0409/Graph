@@ -106,7 +106,7 @@ public class Hashmap {
      * Gets the entry of the graphNode key
      * @param key, the graphNode
      * @return entry if exists; null if not
-     * The running time is O(n)
+     * The running time is O(1)
      */
     public Entry getEntry(GraphNode key) {
         int a = index(key);
