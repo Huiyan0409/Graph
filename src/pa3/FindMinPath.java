@@ -9,7 +9,13 @@ import java.io.FileWriter;
  */
 public class FindMinPath {
 
-	
+	/**
+	 * 
+	 * @param s
+	 * @param d
+	 * @param str
+	 * @return
+	 */
     public static String showPath(GraphNode s,GraphNode d, String str){
         if(!s.getId().equals(d.getId())) {
             String direction = "";
@@ -128,10 +134,14 @@ public class FindMinPath {
 		}
     }
 
+    /**
+     * This is the main method of the whole program, 
+     * @param args
+     */
     public static void main(String args[]) {
-        GraphWrapper gw = new GraphWrapper();
+        GraphWrapper gw = new GraphWrapper(true);
         GraphNode home = gw.getHome();
         writeToFile(run(gw,home));
-        //System.out.println(run(gw,home));
+        System.out.println(run(gw,home));
     }
 }
