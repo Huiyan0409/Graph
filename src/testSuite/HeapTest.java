@@ -144,6 +144,7 @@ public class HeapTest {
 		test.insert(node5);
 		assertTrue(test.remove().getId().equals(node5.getId()));
 		assertTrue(test.remove().getId().equals(node2.getId()));
+		assertTrue(test.hasKey(node3));
 	}
 
 

@@ -7,6 +7,7 @@ import pa3.GraphWrapper;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 import static pa3.FindMinPath.run;
@@ -45,7 +46,6 @@ public class FindMinPathTest {
 		GraphWrapper gw = new GraphWrapper(false);
 		GraphNode home = gw.getHome();
 		String rst = run(gw,home);
-		System.out.println(rst);
 
 		String outputStr = "South\n" +
 				"East\n" +
@@ -171,7 +171,7 @@ public class FindMinPathTest {
 	}
 
 	@Test
-	public void testWriteToFile() {
+	public void testWriteToFile() throws IOException {
 		String writeStr = "test";
 		FindMinPath.writeToFile(writeStr);
 		File answer = new File("src/pa3/answer.txt");
